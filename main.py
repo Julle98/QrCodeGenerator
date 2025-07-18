@@ -26,7 +26,9 @@ class QRCodeApp:
                 'error_save': "Generoi QR-koodi ennen tallennusta.",
                 'lang': "Kieli:",
                 'fi': "Suomi",
-                'en': "Englanti"
+                'en': "Englanti",
+                'watermark': "Tehnyt Julle98",
+                'watermark_url': "https://github.com/Julle98"
             },
             'en': {
                 'title': "QR Code Generator",
@@ -44,7 +46,9 @@ class QRCodeApp:
                 'error_save': "Generate QR code before saving.",
                 'lang': "Language:",
                 'fi': "Finnish",
-                'en': "English"
+                'en': "English",
+                'watermark': "Made by Julle98",
+                'watermark_url': "https://github.com/Julle98"
             }
         }
         self.lang = tk.StringVar(value='fi')
@@ -98,13 +102,15 @@ class QRCodeApp:
         self.qr_label = tk.Label(self.root)
         self.qr_label.pack(pady=10)
 
+        self.watermark = tk.Label(self.root, text=self.languages[self.lang.get()]['watermark'], fg="blue", cursor="hand2", font=self.font)
+        self.watermark.pack(pady=10)
+        self.watermark.bind("<Button-1>", lambda e: self.open_github())
+
     def on_resize(self, event):
-        # Skaalaa fonttia ja nappuloita ikkunan koon mukaan
         w = max(event.width, 300)
         h = max(event.height, 400)
         font_size = max(self.base_font_size, int(min(w, h) / 30))
         self.font = ("Arial", font_size)
-        # Päivitä fontit
         self.lang_label.config(font=self.font)
         self.radio_fi.config(font=self.font)
         self.radio_en.config(font=self.font)
@@ -117,6 +123,8 @@ class QRCodeApp:
         self.btn_bg.config(font=self.font)
         self.btn_generate.config(font=self.font)
         self.btn_save.config(font=self.font)
+        self.watermark.config(font=self.font)
+        self.watermark.config(font=self.font)
 
     def update_language(self):
         lang = self.lang.get()
@@ -131,6 +139,11 @@ class QRCodeApp:
         self.btn_bg.config(text=self.languages[lang]['choose_bg'])
         self.btn_generate.config(text=self.languages[lang]['generate'])
         self.btn_save.config(text=self.languages[lang]['save'])
+        self.watermark.config(text=self.languages[self.lang.get()]['watermark'])
+    def open_github(self):
+        import webbrowser
+        url = self.languages[self.lang.get()]['watermark_url']
+        webbrowser.open_new(url)
 
     def choose_fg(self):
         color = colorchooser.askcolor(title="Valitse etuväri")
@@ -164,7 +177,6 @@ class QRCodeApp:
         tk_img = ImageTk.PhotoImage(img)
         self.qr_label.configure(image=tk_img)
         self.qr_label.image = tk_img
-        # Suurenna ikkuna automaattisesti jos QR-koodi ei näy
         self.root.update_idletasks()
         qr_label_bbox = self.qr_label.bbox()
         if qr_label_bbox:
