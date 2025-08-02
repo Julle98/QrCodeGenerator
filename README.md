@@ -1,4 +1,4 @@
-# QR-code Generator
+# 🔎 QR-code Generator
 
 Basic QR-code generator with customizations and download features. 
 
