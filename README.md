@@ -1,6 +1,6 @@
 # QR-code Generator
 
-This project is a Python application with a graphical user interface for generating, customizing, and uploading QR codes. The user interface allows you to enter the QR code content, choose colors, size, and margins, and upload the QR code as an image.
+Basic QR-code generator with customizations and download features. 
 
 ## Pip installs
 - Python
