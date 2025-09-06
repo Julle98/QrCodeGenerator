@@ -17,6 +17,7 @@ Basic QR-code generator with customizations and download features.
 Make sure you have Python installed. Install the required packages:
 ```
 pip install qrcode[pil]
+Or just run the exe file on windows.
 ```
 
 ## License
