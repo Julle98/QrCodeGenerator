@@ -8,7 +8,7 @@ Basic QR-code generator with customizations and download features.
 - Customize qrcode looks
 - Download qrcode picture
 
-## Pip installs
+## Pip installs (not nessessory)
 - Python
 - Tkinter (user interface)
 - qrcode (QR code generation)
