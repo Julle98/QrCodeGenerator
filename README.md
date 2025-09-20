@@ -1,6 +1,6 @@
 # 🔎 QR-code Generator
 
-Basic QR-code generator with customizations and download features. 
+Basic QR-code generator with customizations and download qr-code features. 
 
 ## Features
 
